@@ -72,7 +72,7 @@ topic
 
 =head1 DESCRIPTION
 
-AWS::SNS::Confess uses Amazon::SNS to post any errors to an Amazon SNS
+AWS::SNS::Confess uses L<Amazon::SNS> to post any errors to an Amazon SNS
 feed for more robust management from there.
 
 
@@ -90,7 +90,8 @@ Publishes the given error message to SNS with a full stack trace
 =head1 SEE ALSO
 
 L<Amazon::SNS>
-L<Carp::Confess>
+
+L<Carp>
 
 =cut
 
