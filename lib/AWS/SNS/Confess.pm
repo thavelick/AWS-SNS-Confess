@@ -1,4 +1,6 @@
 package AWS::SNS::Confess;
+# ABSTRACT: Publish errors to an SNS topic
+
 use base 'Exporter';
 use Amazon::SNS;
 use Devel::StackTrace;
@@ -15,10 +17,10 @@ sub setup
   $access_key_id = $args{access_key_id};
   $secret_access_key = $args{secret_access_key};
   $topic = $args{topic};
-  $sns = $args{sns} || Amazon::SNS->new(
+  $sns = $args{sns} || Amazon::SNS->new({
     key => $access_key_id,
     secret => $secret_access_key,
-  );
+  });
   $sns->service(_service_url());
   $sns_topic = $sns->GetTopic($topic);
 }
@@ -49,3 +51,46 @@ sub _send_msg
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+AWS::S3 - Publish Errors, with a full stack trace to an Amazon SNS
+topic
+
+=head1 SYNOPSIS
+
+  use AWS::SNS::Confess 'confess';
+  AWS::SNS::Confess::setup(
+    access_key_id => 'E654SAKIASDD64ERAF0O',
+    secret_access_key => 'LgTZ25nCD+9LiCV6ujofudY1D6e2vfK0R4GLsI4H'
+    topic => 'arn:aws:sns:us-east-1:738734873:YourTopic',
+  );
+  confess "Something went wrong";
+
+
+=head1 DESCRIPTION
+
+AWS::SNS::Confess uses Amazon::SNS to post any errors to an Amazon SNS
+feed for more robust management from there.
+
+
+=head1 PUBLIC METHODS
+
+=method setup( access_key_id => $aws_access_key_id, secret_access_key
+=> $aws_secret_access_key, topic => $aws_topic );
+
+Sets up to send errors to the given AWS Account and Topic
+
+=method confess( $msg );
+
+Publishes the given error message to SNS with a full stack trace
+
+=head1 SEE ALSO
+
+L<Amazon::SNS>
+L<Carp::Confess>
+
+=cut
+
