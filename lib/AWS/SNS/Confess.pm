@@ -78,12 +78,12 @@ feed for more robust management from there.
 
 =head1 PUBLIC METHODS
 
-=method setup( access_key_id => $aws_access_key_id, secret_access_key
+=head2 setup( access_key_id => $aws_access_key_id, secret_access_key
 => $aws_secret_access_key, topic => $aws_topic );
 
 Sets up to send errors to the given AWS Account and Topic
 
-=method confess( $msg );
+=head2 confess( $msg );
 
 Publishes the given error message to SNS with a full stack trace
 
