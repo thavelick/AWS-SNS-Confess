@@ -52,12 +52,18 @@ sub _send_msg
 
 1;
 
+
+
+__END__
 =pod
 
 =head1 NAME
 
-AWS::S3 - Publish Errors, with a full stack trace to an Amazon SNS
-topic
+AWS::SNS::Confess - Publish errors to an SNS topic
+
+=head1 VERSION
+
+version 0.001
 
 =head1 SYNOPSIS
 
@@ -69,16 +75,20 @@ topic
   );
   confess "Something went wrong";
 
-
 =head1 DESCRIPTION
 
 AWS::SNS::Confess uses L<Amazon::SNS> to post any errors to an Amazon SNS
 feed for more robust management from there.
 
+=head1 NAME
+
+AWS::S3 - Publish Errors, with a full stack trace to an Amazon SNS
+topic
 
 =head1 PUBLIC METHODS
 
-=head2 setup( access_key_id => $aws_access_key_id, secret_access_key => $aws_secret_access_key, topic => $aws_topic );
+=head2 setup( access_key_id => $aws_access_key_id, secret_access_key
+=> $aws_secret_access_key, topic => $aws_topic );
 
 Sets up to send errors to the given AWS Account and Topic
 
@@ -91,6 +101,17 @@ Publishes the given error message to SNS with a full stack trace
 L<Amazon::SNS>
 
 L<Carp>
+
+=head1 AUTHOR
+
+Tristan Havelick <tristan@havelick.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2012 by Tristan Havelick.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 
