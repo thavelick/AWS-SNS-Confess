@@ -24,8 +24,7 @@ feed for more robust management from there.
 
 # PUBLIC METHODS
 
-## setup( access_key_id => $aws_access_key_id, secret_access_key
-=> $aws_secret_access_key, topic => $aws_topic );
+## setup( access_key_id => $aws_access_key_id, secret_access_key => $aws_secret_access_key, topic => $aws_topic );
 
 Sets up to send errors to the given AWS Account and Topic
 
